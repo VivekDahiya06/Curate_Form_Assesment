@@ -1,12 +1,11 @@
+import Form from "./pages/Form"
 
-
-function App() {
-
+const App = () => {
   return (
     <>
-      This is home page
+      <Form />
     </>
   )
 }
 
-export default App;
+export default App
