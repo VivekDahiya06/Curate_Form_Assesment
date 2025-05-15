@@ -1,10 +1,10 @@
-import { Button, Dialog, DialogTitle } from '@mui/material'
+import { Dialog, DialogTitle } from '@mui/material'
 import { useState } from 'react'
 import Profile from '../components/form/Profile_Page';
 import Related_Info from '../components/form/Related_Info_Page';
 import { useFormStore } from '../store/Form.store';
 
-const Form = () => {
+const Form_Dialog = () => {
 
     // Constants
     const Form_Tabs = [
@@ -25,7 +25,6 @@ const Form = () => {
 
     return (
         <>
-            <Button variant='contained' onClick={() => setOpenForm(true)}>Open Form</Button>
             <Dialog
                 open={openForm}
                 onClose={() => setOpenForm(false)}
@@ -63,4 +62,4 @@ const Form = () => {
     )
 }
 
-export default Form
+export default Form_Dialog;

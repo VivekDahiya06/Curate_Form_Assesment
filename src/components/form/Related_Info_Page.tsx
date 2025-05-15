@@ -2,35 +2,11 @@
 import { Box, Button, FormControl, FormLabel, TextField } from '@mui/material';
 import { useState } from 'react';
 import { useFormStore } from '../../store/Form.store';
+import type { Input_Event_Type, Related_Info_Form_Types } from '../../types/Related_Info.types';
 
 const Related_Info = () => {
 
-
-    // Type Definition
-    interface Related_Info_Form_Types {
-        domicile: string;
-        maritalStatus: string;
-        currentAddress: string;
-        country: string;
-        placeOfBirth: string;
-        religion: string;
-        citizenIdentification: string;
-        dateOfIssue: string;
-        placeOfIssue: string;
-        resident: string;
-        bankAccountNumber: string;
-        bankAccountName: string;
-        bankName: string;
-        personalTaxCode: string;
-        epfNo: string;
-        socialSecurityNo: string;
-        facebook: string;
-        linkedin: string;
-        skype: string;
-    }
-    type Input_Event_Type = React.ChangeEvent<HTMLInputElement>
-
-
+    
     // Constant styles for Form Labels
     const Form_Label_Styles = {
         fontSize: { xs: "0.78rem", sm: "0.87rem" },
@@ -38,8 +14,12 @@ const Related_Info = () => {
         fontWeight: "bold"
     }
 
+    
     //States
     const setOpenForm = useFormStore((state) => state.setOpenForm);
+    const openForm = useFormStore((state) => state.openForm);
+    const setGlobalFormData = useFormStore((state) => state.setGlobalFormData);
+    const GlobalFormData = useFormStore((state) => state.GlobalFormData);
     const [form_Data, setForm_Data] = useState<Related_Info_Form_Types>({
         domicile: '',
         maritalStatus: '',
@@ -66,7 +46,8 @@ const Related_Info = () => {
     // Functions
     const handle_Form_Submit = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("form_Data", form_Data);
+        setGlobalFormData({ ...GlobalFormData, Related_Info_Data: form_Data });
+        setOpenForm(!openForm);
     }
 
     const handle_Change = (e: Input_Event_Type) => {
@@ -111,7 +92,7 @@ const Related_Info = () => {
                             </Box>
                             <Box className="flex flex-col">
                                 <FormLabel sx={Form_Label_Styles}>Date of Issue</FormLabel>
-                                <TextField fullWidth size="small" name="maritalStatus" value={form_Data.maritalStatus} onChange={(e: Input_Event_Type) => handle_Change(e)} />
+                                <TextField fullWidth size="small" name="dateOfIssue" value={form_Data.dateOfIssue} onChange={(e: Input_Event_Type) => handle_Change(e)} />
                             </Box>
                             <Box className="flex flex-col">
                                 <FormLabel sx={Form_Label_Styles}>Place of Issue</FormLabel>

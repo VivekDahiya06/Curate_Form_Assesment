@@ -10,37 +10,13 @@ import { IoCamera } from "react-icons/io5";
 import { FaIndianRupeeSign } from "react-icons/fa6";
 import { Textarea } from '@mui/joy';
 import { useFormStore } from '../../store/Form.store';
+import type { Area_Event_Type, Form_Data_Types, Input_Event_Type } from '../../types/Profile.types';
 
 const Profile = () => {
 
 
     // Type Definitions
-    interface Form_Data_Types {
-        staff_code: string;
-        first_name: string;
-        last_name: string;
-        gender: string;
-        date_of_birth: string;
-        email: string;
-        phone_number: string;
-        workplace: string;
-        status: string;
-        job_position: string;
-        direct_manager: string;
-        role: string;
-        academic_level: string;
-        hourly_rate: string;
-        default_language: string;
-        direction: string;
-        email_signature: string;
-        other_info: string;
-        twilo_phone_number: string;
-        is_twilo_phone_number_whatsapp_enabled: string;
-        password: string;
-    }
-    type Input_Event_Type = React.ChangeEvent<HTMLInputElement>
     type Select_Event_Type = SelectChangeEvent
-    type Area_Event_Type = React.ChangeEvent<HTMLTextAreaElement>
 
 
     // Constant styles for Form Labels
@@ -53,6 +29,8 @@ const Profile = () => {
 
     // States & Hooks
     const setOpenForm = useFormStore((state) => state.setOpenForm);
+    const setGlobalFormData = useFormStore((state) => state.setGlobalFormData);
+    const GlobalFormData = useFormStore((state) => state.GlobalFormData);
     const [profileHovered, setProfileHovered] = useState<boolean>(false);
     const [form_Data, setForm_Data] = useState<Form_Data_Types>({
         staff_code: '',
@@ -89,7 +67,7 @@ const Profile = () => {
 
     const handle_Form_Submit = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("form_Data", form_Data)
+        setGlobalFormData({...GlobalFormData,Profile_Data:form_Data});
     }
 
 
