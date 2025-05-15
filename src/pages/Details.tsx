@@ -1,5 +1,5 @@
 import { Avatar, Button } from '@mui/material'
-import { FaUserAlt } from 'react-icons/fa'
+import { FaUserAlt, FaUserEdit } from 'react-icons/fa'
 import { FaFacebook } from "react-icons/fa6";
 import { IoLogoSkype } from "react-icons/io5";
 import { FaLinkedin } from "react-icons/fa6";
@@ -24,8 +24,19 @@ const Details = () => {
             <section className='w-1/2 h-full p-10 flex flex-col gap-4'>
                 <div className='flex flex-col items-center gap-4 rounded-md border-[1px] border-gray-400 py-4'>
                     <div className='flex flex-col items-center gap-2'>
-                        <Avatar className='relative' sx={{ width: 150, height: 150 }}>
-                            <FaUserAlt className="relative" size={100} />
+                        <Avatar
+                            className='relative'
+                            sx={{ width: 150, height: 150 }}
+                        >
+                            {GlobalFormData?.Profile_Data?.imageURL ? (
+                                <img
+                                    src={GlobalFormData?.Profile_Data.imageURL}
+                                    alt="Profile"
+                                    className="w-full h-full object-cover rounded-full"
+                                />
+                            ) : (
+                                <FaUserAlt className="relative" size={100} />
+                            )}
                         </Avatar>
                         <p className='text-2xl font-bold'>
                             {(GlobalFormData?.Profile_Data?.first_name || GlobalFormData?.Profile_Data?.last_name)
@@ -94,7 +105,7 @@ const Details = () => {
                         <p className='flex items-center gap-2 border-[1px] border-gray-400 rounded-md p-2'>Personal Tax Code : {GlobalFormData?.Related_Info_Data?.personalTaxCode || 'Personal Tax Code'}</p>
                     </div>
                 </div>
-                <Button variant='contained' color='success' onClick={() => setOpenForm(true)}>
+                <Button variant='contained' color='success' endIcon={<FaUserEdit size={15} />} onClick={() => setOpenForm(true)}>
                     Edit
                 </Button>
             </section>

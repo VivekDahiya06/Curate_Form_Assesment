@@ -55,8 +55,17 @@ const Profile = () => {
         other_info: '',
         twilo_phone_number: '',
         is_twilo_phone_number_whatsapp_enabled: '',
-        password: ''
+        password: '',
+        imageURL: '',
     });
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            const imageUrl = URL.createObjectURL(file);
+            setForm_Data({ ...form_Data, imageURL: imageUrl });
+        }
+    };
 
 
 
@@ -79,17 +88,34 @@ const Profile = () => {
                 <div className="Avatar_Form_Container w-full h-full p-2 flex flex-col items-center justify-evenly">
                     <div className='Avatar_And_Switch_Container w-full h-full p-2 flex flex-col items-center justify-start gap-5'>
                         <div className='Avatar_Container flex flex-col items-center justify-center gap-3'>
-                            <Avatar className='relative' sx={{ width: 150, height: 150 }} onMouseEnter={() => setProfileHovered(true)} onMouseLeave={() => setProfileHovered(false)}>
-                                <FaUserAlt className="relative" size={100} />
-                                {
-                                    profileHovered && (
-                                        <div className="absolute z-5 w-full h-full flex items-center justify-center bg-slate-700 opacity-80">
-                                            <IoCamera size={60} />
-                                        </div>
-                                    )
-                                }
-                                <input type='file' className="absolute z-40 opacity-0 w-full h-full items-center justify-center cursor-pointer" />
+                            <Avatar
+                                className='relative'
+                                sx={{ width: 150, height: 150 }}
+                                onMouseEnter={() => setProfileHovered(true)}
+                                onMouseLeave={() => setProfileHovered(false)}
+                            >
+                                {form_Data.imageURL ? (
+                                    <img
+                                        src={form_Data.imageURL}
+                                        alt="Profile"
+                                        className="w-full h-full object-cover rounded-full"
+                                    />
+                                ) : (
+                                    <FaUserAlt className="relative" size={100} />
+                                )}
 
+                                {profileHovered && (
+                                    <div className="absolute z-5 w-full h-full flex items-center justify-center bg-slate-700 opacity-80">
+                                        <IoCamera size={40} className="text-white" />
+                                    </div>
+                                )}
+
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={handleFileChange}
+                                    className="absolute z-20 w-full h-full opacity-0 cursor-pointer"
+                                />
                             </Avatar>
                             <span className="text-[0.7rem] text-center">
                                 Recommended dimensions: 200x200
