@@ -90,7 +90,7 @@ const Profile = () => {
                         <div className='Avatar_Container flex flex-col items-center justify-center gap-3'>
                             <Avatar
                                 className='relative'
-                                sx={{ width: 150, height: 150 }}
+                                sx={{ width: 'clamp(100px, 15vw, 150px)', height: 'clamp(100px, 15vw, 150px)' }}
                                 onMouseEnter={() => setProfileHovered(true)}
                                 onMouseLeave={() => setProfileHovered(false)}
                             >
@@ -101,7 +101,7 @@ const Profile = () => {
                                         className="w-full h-full object-cover rounded-full"
                                     />
                                 ) : (
-                                    <FaUserAlt className="relative" size={100} />
+                                    <FaUserAlt className="relative" size='clamp(50px, 15vw, 100px)' />
                                 )}
 
                                 {profileHovered && (
@@ -132,7 +132,7 @@ const Profile = () => {
                                     <FormLabel sx={Form_Label_Styles}>Staff Code<span className='text-red-600'>*</span></FormLabel>
                                     <TextField fullWidth required size="small" name="staff_code" value={form_Data.staff_code} onChange={(e: Input_Event_Type) => handle_Change(e)} />
                                 </Box>
-                                <Box className="flex justify-between gap-8">
+                                <Box className="flex flex-col sm:flex-row justify-between gap-8">
                                     <Box className="flex flex-col gap-1.5">
                                         <FormLabel sx={Form_Label_Styles}>First Name<span className='text-red-600'>*</span></FormLabel>
                                         <TextField fullWidth required size="small" name="first_name" value={form_Data.first_name} onChange={(e: Input_Event_Type) => handle_Change(e)} />
@@ -142,7 +142,7 @@ const Profile = () => {
                                         <TextField fullWidth required size="small" name="last_name" value={form_Data.last_name} onChange={(e: Input_Event_Type) => handle_Change(e)} />
                                     </Box>
                                 </Box>
-                                <Box className="flex items-center justify-between gap-8">
+                                <Box className="flex flex-col sm:flex-row items-center justify-between gap-8">
                                     <FormControl fullWidth>
                                         <FormLabel sx={{
                                             ...Form_Label_Styles, '&.Mui-focused': {
@@ -187,7 +187,7 @@ const Profile = () => {
                                         </LocalizationProvider>
                                     </FormControl>
                                 </Box>
-                                <Box className="flex justify-between gap-8">
+                                <Box className="flex flex-col sm:flex-row justify-between gap-8">
                                     <Box className="flex flex-col gap-1.5">
                                         <FormLabel sx={Form_Label_Styles}>Email<span className='text-red-600'>*</span></FormLabel>
                                         <TextField fullWidth required size="small" name="email" value={form_Data.email} onChange={(e: Input_Event_Type) => handle_Change(e)} />
@@ -197,7 +197,7 @@ const Profile = () => {
                                         <TextField fullWidth required size="small" name="phone_number" value={form_Data.phone_number} onChange={(e: Input_Event_Type) => handle_Change(e)} />
                                     </Box>
                                 </Box>
-                                <Box className="flex justify-between gap-8">
+                                <Box className="flex flex-col sm:flex-row justify-between gap-8">
                                     <Box className="flex flex-col gap-1.5">
                                         <FormLabel sx={Form_Label_Styles}>Workplace</FormLabel>
                                         <TextField fullWidth size="small" name="workplace" value={form_Data.workplace} onChange={(e: Input_Event_Type) => handle_Change(e)} />
@@ -207,7 +207,7 @@ const Profile = () => {
                                         <TextField fullWidth required size="small" name="status" value={form_Data.status} onChange={(e: Input_Event_Type) => handle_Change(e)} />
                                     </Box>
                                 </Box>
-                                <Box className="flex justify-between gap-8">
+                                <Box className="flex flex-col sm:flex-row justify-between gap-8">
                                     <Box className="flex flex-col gap-1.5">
                                         <FormLabel sx={Form_Label_Styles}>Job Position</FormLabel>
                                         <TextField fullWidth size="small" name="job_position" value={form_Data.job_position} onChange={(e: Input_Event_Type) => handle_Change(e)} />
@@ -221,7 +221,7 @@ const Profile = () => {
                                     <FormLabel sx={Form_Label_Styles}>Role</FormLabel>
                                     <TextField fullWidth size="small" name="role" value={form_Data.role} onChange={(e: Input_Event_Type) => handle_Change(e)} />
                                 </Box>
-                                <Box className="flex justify-between gap-8">
+                                <Box className="flex flex-col sm:flex-row justify-between gap-8">
                                     <Box className="flex flex-col gap-1.5">
                                         <FormLabel sx={Form_Label_Styles}>Academic Level</FormLabel>
                                         <TextField fullWidth size="small" name="academic_level" value={form_Data.academic_level} onChange={(e: Input_Event_Type) => handle_Change(e)} />
@@ -241,7 +241,7 @@ const Profile = () => {
                                         }} value={form_Data.hourly_rate} onChange={(e: Input_Event_Type) => handle_Change(e)} />
                                     </Box>
                                 </Box>
-                                <Box className="flex justify-between gap-8">
+                                <Box className="flex flex-col sm:flex-row justify-between gap-8">
                                     <Box className="flex flex-col gap-1.5">
                                         <FormLabel sx={Form_Label_Styles}>Default Language</FormLabel>
                                         <TextField fullWidth size="small" name="default_language" value={form_Data.default_language} onChange={(e: Input_Event_Type) => handle_Change(e)} />
@@ -251,7 +251,7 @@ const Profile = () => {
                                         <TextField fullWidth size="small" name="direction" value={form_Data.direction} onChange={(e: Input_Event_Type) => handle_Change(e)} />
                                     </Box>
                                 </Box>
-                                <Box className="flex justify-between gap-8">
+                                <Box className="flex flex-col sm:flex-row justify-between gap-8">
                                     <Box className="w-full flex flex-col gap-1.5">
                                         <FormLabel sx={Form_Label_Styles}>Email Signature<span className='text-red-600'>*</span></FormLabel>
                                         <Textarea sx={{ width: '100%' }} required minRows={4} name='email_signature' value={form_Data.email_signature} onChange={(e: Area_Event_Type) => handle_Change(e)} />
@@ -283,8 +283,8 @@ const Profile = () => {
                                 </Box>
                             </Box>
 
-                            <Box className="Buttons_Container flex flex-row justify-end gap-3 sm:gap-5">
-                                <Button variant="outlined" color="inherit" sx={{ textTransform: 'none' }} onClick={() => setOpenForm(false)}>
+                            <Box className="Buttons_Container flex flex-col sm:flex-row justify-end gap-3 sm:gap-5">
+                                <Button variant="outlined" color="inherit" sx={{ textTransform: 'none', order: 2 }} onClick={() => setOpenForm(false)}>
                                     Close
                                 </Button>
                                 <Button variant="contained" type='submit' color="success" sx={{ textTransform: 'none' }}>

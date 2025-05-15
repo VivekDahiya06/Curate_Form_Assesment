@@ -63,7 +63,7 @@ const Related_Info = () => {
             <section className="Left_Section px-4 w-full">
                 <form onSubmit={(e: React.FormEvent) => handle_Form_Submit(e)} className="Form_Container w-full h-full">
                     <FormControl fullWidth className="flex flex-col gap-[4rem]">
-                        <Box className="w-full flex flex-wrap justify-between gap-4">
+                        <Box className="w-full flex flex-col sm:flex-row flex-wrap justify-between gap-4">
                             <Box className="flex flex-col">
                                 <FormLabel sx={Form_Label_Styles}>Domicile</FormLabel>
                                 <TextField fullWidth size="small" name="domicile" value={form_Data.domicile} onChange={(e: Input_Event_Type) => handle_Change(e)} />
@@ -138,8 +138,8 @@ const Related_Info = () => {
                             </Box>
                         </Box>
 
-                        <Box className="Buttons_Container flex flex-row justify-end gap-3 sm:gap-5">
-                            <Button variant="outlined" color="inherit" sx={{ textTransform: 'none' }} onClick={() => setOpenForm(false)}>
+                        <Box className="Buttons_Container flex flex-col sm:flex-row justify-end gap-3 sm:gap-5">
+                            <Button variant="outlined" color="inherit" sx={{ textTransform: 'none', order: 2 }} onClick={() => setOpenForm(false)}>
                                 Close
                             </Button>
                             <Button variant="contained" type='submit' color="success" sx={{ textTransform: 'none' }}>
