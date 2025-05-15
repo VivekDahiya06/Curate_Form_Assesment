@@ -62,7 +62,7 @@ const Details = () => {
                     </p>
                 </div>
             </section>
-            <section className='w-1/2 h-full p-10 flex flex-col gap-4'>
+            <section className='w-1/2 h-full p-8 flex flex-col gap-4'>
                 <div className='flex flex-col gap-3'>
                     <h1 className='text-2xl font-bold'>General Information</h1>
                     <div className='flex flex-col'>
