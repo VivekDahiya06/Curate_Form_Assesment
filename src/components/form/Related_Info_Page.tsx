@@ -17,7 +17,7 @@ const Related_Info = () => {
     }
 
     
-    //States
+    //States & Hooks
     const setOpenForm = useFormStore((state) => state.setOpenForm);
     const openForm = useFormStore((state) => state.openForm);
     const setGlobalFormData = useFormStore((state) => state.setGlobalFormData);
