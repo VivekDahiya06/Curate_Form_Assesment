@@ -36,10 +36,10 @@ const Details = () => {
 
                     </div>
                     <p className='flex gap-4'>
-                        <a href={GlobalFormData?.Related_Info_Data?.facebook || '#'}><span><FaFacebook size={25} /></span></a>
-                        <a href={GlobalFormData?.Related_Info_Data?.skype || '#'}><span><IoLogoSkype size={25} /></span></a>
-                        <a href={GlobalFormData?.Related_Info_Data?.linkedin || '#'}><span><FaLinkedin size={25} /></span></a>
-                        <a href={GlobalFormData?.Profile_Data?.email || '#'}><span><IoMail size={25} /></span></a>
+                        <a href={GlobalFormData?.Related_Info_Data?.facebook || '#'} target='_blank' rel='noreferrer noopener'><span><FaFacebook size={25} /></span></a>
+                        <a href={GlobalFormData?.Related_Info_Data?.skype || '#'} target='_blank' rel='noreferrer noopener'><span><IoLogoSkype size={25} /></span></a>
+                        <a href={GlobalFormData?.Related_Info_Data?.linkedin || '#'} target='_blank' rel='noreferrer noopener'><span><FaLinkedin size={25} /></span></a>
+                        <a href={GlobalFormData?.Profile_Data?.email || '#'} target='_blank' rel='noreferrer noopener'><span><IoMail size={25} /></span></a>
                     </p>
                 </div>
                 <div className='flex flex-col gap-5'>
