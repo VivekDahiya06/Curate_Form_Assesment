@@ -1,5 +1,4 @@
-'use client'
-import { Avatar, Box, Button, FormControl, FormLabel, InputAdornment, MenuItem, Select, Switch, TextField, type SelectChangeEvent } from '@mui/material';
+import { Avatar, Box, Button, FormControl, FormLabel, IconButton, InputAdornment, MenuItem, Select, Switch, TextField, type SelectChangeEvent } from '@mui/material';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
@@ -11,6 +10,8 @@ import { FaIndianRupeeSign } from "react-icons/fa6";
 import { Textarea } from '@mui/joy';
 import { useFormStore } from '../../store/Form.store';
 import type { Area_Event_Type, Form_Data_Types, Input_Event_Type } from '../../types/Profile.types';
+import { FaRegEye } from "react-icons/fa";
+import { FaRegEyeSlash } from "react-icons/fa";
 
 const Profile = () => {
 
@@ -32,6 +33,7 @@ const Profile = () => {
     const setGlobalFormData = useFormStore((state) => state.setGlobalFormData);
     const GlobalFormData = useFormStore((state) => state.GlobalFormData);
     const [profileHovered, setProfileHovered] = useState<boolean>(false);
+    const [showPassword, setShowPassword] = useState<boolean>(false);
     const [form_Data, setForm_Data] = useState<Form_Data_Types>({
         staff_code: '',
         first_name: '',
@@ -67,7 +69,7 @@ const Profile = () => {
 
     const handle_Form_Submit = (e: React.FormEvent) => {
         e.preventDefault();
-        setGlobalFormData({...GlobalFormData,Profile_Data:form_Data});
+        setGlobalFormData({ ...GlobalFormData, Profile_Data: form_Data });
     }
 
 
@@ -234,16 +236,24 @@ const Profile = () => {
                                     </Box>
                                 </Box>
                                 <Box>
-                                    <FormLabel sx={{ display:'flex',alignItems:'center', gap:1 ,...Form_Label_Styles }}><FaEdit size={18} color={'#4d81fa'} /> Twilo Phone Number</FormLabel>
+                                    <FormLabel sx={{ display: 'flex', alignItems: 'center', gap: 1, ...Form_Label_Styles }}><FaEdit size={18} color={'#4d81fa'} /> Twilo Phone Number</FormLabel>
                                     <TextField fullWidth size="small" name='twilo_phone_number' value={form_Data.twilo_phone_number} onChange={(e: Input_Event_Type) => handle_Change(e)} />
                                 </Box>
                                 <Box>
-                                    <FormLabel sx={{ display:'flex',alignItems:'center', gap:1 ,...Form_Label_Styles }}><FaEdit size={18} color={'#4d81fa'} />Is Twilo Phone Number Whatsapp Enabled ?</FormLabel>
+                                    <FormLabel sx={{ display: 'flex', alignItems: 'center', gap: 1, ...Form_Label_Styles }}><FaEdit size={18} color={'#4d81fa'} />Is Twilo Phone Number Whatsapp Enabled ?</FormLabel>
                                     <TextField fullWidth size="small" name='is_twilo_phone_number_whatsapp_enabled' value={form_Data.is_twilo_phone_number_whatsapp_enabled} onChange={(e: Input_Event_Type) => handle_Change(e)} />
                                 </Box>
                                 <Box>
                                     <FormLabel sx={Form_Label_Styles}>Password<span className='text-red-600'>*</span></FormLabel>
-                                    <TextField fullWidth size="small" required name='password' value={form_Data.password} onChange={(e: Input_Event_Type) => handle_Change(e)} />
+                                    <TextField fullWidth size="small" required type={showPassword ? 'text' : 'password'} name='password' value={form_Data.password} InputProps={{
+                                        endAdornment: (
+                                            <InputAdornment position="end">
+                                                <IconButton onClick={() => setShowPassword(!showPassword)}>
+                                                    {showPassword ? <FaRegEyeSlash size={18} color={'#000'} /> : <FaRegEye size={18} color={'#000'} />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        ),
+                                    }} onChange={(e: Input_Event_Type) => handle_Change(e)} />
                                 </Box>
                             </Box>
 

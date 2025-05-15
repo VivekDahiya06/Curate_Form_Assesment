@@ -1,6 +1,8 @@
-'use client'
 import { Box, Button, FormControl, FormLabel, TextField } from '@mui/material';
 import { useState } from 'react';
+import { FaFacebook } from "react-icons/fa6";
+import { IoLogoSkype } from "react-icons/io5";
+import { FaLinkedin } from "react-icons/fa6";
 import { useFormStore } from '../../store/Form.store';
 import type { Input_Event_Type, Related_Info_Form_Types } from '../../types/Related_Info.types';
 
@@ -123,15 +125,15 @@ const Related_Info = () => {
                                 <TextField fullWidth size="small" name="socialSecurityNo" value={form_Data.socialSecurityNo} onChange={(e: Input_Event_Type) => handle_Change(e)} />
                             </Box>
                             <Box className="flex flex-col">
-                                <FormLabel sx={Form_Label_Styles}>Facebook</FormLabel>
+                                <FormLabel sx={{ display:'flex',alignItems:'center', gap:1 ,...Form_Label_Styles }}><FaFacebook size={16} /> Facebook</FormLabel>
                                 <TextField fullWidth size="small" name="facebook" value={form_Data.facebook} onChange={(e: Input_Event_Type) => handle_Change(e)} />
                             </Box>
                             <Box className="flex flex-col">
-                                <FormLabel sx={Form_Label_Styles}>LinkedIn</FormLabel>
+                                <FormLabel sx={{ display:'flex',alignItems:'center', gap:1 ,...Form_Label_Styles }}><FaLinkedin size={16} />LinkedIn</FormLabel>
                                 <TextField fullWidth size="small" name="linkedin" value={form_Data.linkedin} onChange={(e: Input_Event_Type) => handle_Change(e)} />
                             </Box>
                             <Box className="flex flex-col">
-                                <FormLabel sx={Form_Label_Styles}>Skype</FormLabel>
+                                <FormLabel sx={{ display:'flex',alignItems:'center', gap:1 ,...Form_Label_Styles }}><IoLogoSkype size={16} />Skype</FormLabel>
                                 <TextField fullWidth size="small" name="skype" value={form_Data.skype} onChange={(e: Input_Event_Type) => handle_Change(e)} />
                             </Box>
                         </Box>
