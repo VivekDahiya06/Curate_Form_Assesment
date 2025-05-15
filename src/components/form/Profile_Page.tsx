@@ -284,10 +284,10 @@ const Profile = () => {
                             </Box>
 
                             <Box className="Buttons_Container flex flex-col sm:flex-row justify-end gap-3 sm:gap-5">
-                                <Button variant="outlined" color="inherit" sx={{ textTransform: 'none', order: 2 }} onClick={() => setOpenForm(false)}>
+                                <Button className='order-2 sm:order-1' variant="outlined" color="inherit" sx={{ textTransform: 'none' }} onClick={() => setOpenForm(false)}>
                                     Close
                                 </Button>
-                                <Button variant="contained" type='submit' color="success" sx={{ textTransform: 'none' }}>
+                                <Button className='order-1 sm:order-2' variant="contained" type='submit' color="success" sx={{ textTransform: 'none' }}>
                                     Save
                                 </Button>
                             </Box>
