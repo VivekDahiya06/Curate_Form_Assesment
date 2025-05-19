@@ -79,6 +79,7 @@ const Profile = () => {
     const handle_Form_Submit = (e: React.FormEvent) => {
         e.preventDefault();
         setGlobalFormData({ ...GlobalFormData, Profile_Data: form_Data });
+        setOpenForm(false)
     }
 
 
