@@ -21,7 +21,7 @@ const Details = () => {
 
     return (
         <main className='w-full h-full flex flex-col md:flex-row items-start'>
-            <section className='w-full sm:w-1/2 h-full p-4 sm:p-10 flex flex-col gap-4'>
+            <section className='w-full md:w-1/2 h-full p-4 sm:p-10 flex flex-col gap-4'>
                 <div className='flex flex-col items-center gap-5 sm:gap-4 rounded-md border-[1px] border-gray-400 py-4'>
                     <div className='flex flex-col items-center gap-2'>
                         <Avatar
@@ -73,7 +73,7 @@ const Details = () => {
                     </p>
                 </div>
             </section>
-            <section className='w-full sm:w-1/2 h-full p-8 flex flex-col gap-4'>
+            <section className='w-full md:w-1/2 h-full p-8 flex flex-col gap-4'>
                 <div className='flex flex-col gap-3'>
                     <h1 className='text-2xl font-bold'>General Information</h1>
                     <div className='flex flex-col'>
